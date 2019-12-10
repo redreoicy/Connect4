@@ -102,32 +102,40 @@ public class Connect4 extends JFrame{
             for (int i = 0; i < 4; i++) { //check horizontal for black win
                 if ((c-3 + i)>-1 && c-3+i<4){
                     horizontal4s[y][c-3+i]++;
-                    if (horizontal4s[y][c-3+i] == 4)
+                    if (horizontal4s[y][c-3+i] == 4){
                         winnerText.setText("BLACK WINS");
+                        disableMoves();
+                    }
                 }
             }
             
             for (int i = 0; i < 4; i++) { //check vertical for black win
                 if (y-3+i>-1 && y-3+i<3){
                     vertical4s[y-3+i][c]++;
-                    if (vertical4s[y-3+i][c] == 4)
+                    if (vertical4s[y-3+i][c] == 4){
                         winnerText.setText("BLACK WINS");
+                        disableMoves();
+                    }
                 }
             }
             
             for (int i = 0; i < 4; i++) { //check TLBR diag for black win
                 if (y-3+i>-1 && y-3+i<3 && c-3+i>-1 && c-3+i<4){
                     diagonalTLBR4s[y-3+i][c-3+i]++;
-                    if (diagonalTLBR4s[y-3+i][c-3+i] == 4)
+                    if (diagonalTLBR4s[y-3+i][c-3+i] == 4){
                         winnerText.setText("BLACK WINS");
+                        disableMoves();
+                    }
                 }
             }
             
             for (int i = 0; i < 4; i++) { //check TRBL diag for black win
                 if (y-3+i>-1 && y-3+i<3 && c+3-i>-1 && c+3-i < 4){
                     diagonalTRBL4s[y-3+i][c+3-i]++;
-                    if (diagonalTRBL4s[y-3+i][c+3-i] == 4)
+                    if (diagonalTRBL4s[y-3+i][c+3-i] == 4){
                         winnerText.setText("BLACK WINS");
+                        disableMoves();
+                    }
                 }
             }
             
@@ -146,32 +154,40 @@ public class Connect4 extends JFrame{
             for (int i = 0; i < 4; i++) { //check horizontal for black win
                 if ((c-3 + i)>-1 && c-3+i<4){
                     horizontal4s[y][c-3+i]--;
-                    if (horizontal4s[y][c-3+i] == -4)
+                    if (horizontal4s[y][c-3+i] == -4){
                         winnerText.setText("RED WINS");
+                        disableMoves();
+                    }
                 }
             }
             
             for (int i = 0; i < 4; i++) { //check vertical for black win
                 if (y-3+i>-1 && y-3+i<3){
                     vertical4s[y-3+i][c]--;
-                    if (vertical4s[y-3+i][c] == -4)
+                    if (vertical4s[y-3+i][c] == -4){
                         winnerText.setText("RED WINS");
+                        disableMoves();
+                    }
                 }
             }
             
             for (int i = 0; i < 4; i++) { //check TLBR diag for black win
                 if (y-3+i>-1 && y-3+i<3 && c-3+i>-1 && c-3+i<4){
                     diagonalTLBR4s[y-3+i][c-3+i]--;
-                    if (diagonalTLBR4s[y-3+i][c-3+i] == -4)
+                    if (diagonalTLBR4s[y-3+i][c-3+i] == -4){
                         winnerText.setText("RED WINS");
+                        disableMoves();
+                    }
                 }
             }
             
             for (int i = 0; i < 4; i++) { //check TRBL diag for black win
                 if (y-3+i>-1 && y-3+i<3 && c+3-i>-1 && c+3-i < 4){
                     diagonalTRBL4s[y-3+i][c+3-i]--;
-                    if (diagonalTRBL4s[y-3+i][c+3-i] == -4)
+                    if (diagonalTRBL4s[y-3+i][c+3-i] == -4){
                         winnerText.setText("RED WINS");
+                        disableMoves();
+                    }
                 }
             }
             
@@ -181,6 +197,12 @@ public class Connect4 extends JFrame{
         currentFilled[c]++;
         if(currentFilled[c] == 6)
             moveSelect[c].setEnabled(false);
+    }
+    
+    private void disableMoves(){
+        for (int i = 0; i < 7; i++) {
+            moveSelect[i].setEnabled(false);
+        }
     }
     
     private void newGame(){ //adding new game method.  The turn to play will carry over
